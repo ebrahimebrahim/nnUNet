@@ -31,9 +31,12 @@ class nnUNetTrainerGuideCatheterV3(nnUNetTrainer):
             patch_size, rotation, max(self.scale_range)
         )
         self.print_to_log_file(
-            f"GuideCatheterV3: isotropic scaling={self.scale_range}, "
-            f"p_scaling=1.0, uniform sampling; "
-            f"initial_patch_size={initial_patch_size.tolist()}, patch_size={patch_size}"
+            "\n========== GUIDE CATHETER V3 CUSTOM TRAINER ==========\n"
+            f"Trainer: {self.__class__.__name__}\n"
+            f"Isotropic scaling: {self.scale_range[0]}-"
+            f"{self.scale_range[1]} on 100% of training patches (uniform sampling)\n"
+            f"Loader crop: {initial_patch_size.tolist()}; network patch: {patch_size}\n"
+            "====================================================\n"
         )
         return rotation, dummy_2d, initial_patch_size, mirror_axes
 
